@@ -143,15 +143,17 @@
               class="column is-6 has-vertically-aligned-content"
               data-aos="fade-right"
             >
+            {% for about in about_me %}
               <p class="is-larger">
                 &emsp;&emsp;<strong
-                  >{{ about_me.short_intro }}</strong
+                  >{{ about.short_intro }}</strong
                 >
               </p>
               <br />
               <p class="is-centered">
-                {{ about_me.description }}
+                {{ about.description }}
               </p>
+            {% endfor %}
               <br />
               <div class="is-divider"></div>
               <div class="columns about-links">
@@ -184,7 +186,10 @@
           </div>
         </div>
       </div>
+
+      <div class="is-divider"></div>
       <!-- End About Me Content -->
+
       <div class="section-dark resume">
         <div class="container">
           <div
@@ -210,6 +215,9 @@
           </div>
         </div>
       </div>
+
+      <div class="is-divider"></div>
+
       <!-- Begin Services Content -->
       <div class="section-color services" id="services">
         <div class="container">
@@ -267,6 +275,9 @@
         </div>
       </div>
       <!-- End Services Content -->
+
+      <div class="is-divider"></div>
+
       <!-- Begin Skills Content -->
       <div class="section-light skills" id="skills">
         <div class="container">
@@ -306,6 +317,9 @@
         </div>
       </div>
       <!-- End Skills Content -->
+
+      <div class="is-divider"></div>
+
       <!-- Begin Work Content -->
       <div class="section-dark my-work" id="my-work">
         <div class="container">
@@ -332,6 +346,9 @@
         </div>
       </div>
       <!-- End Work Content -->
+
+      <div class="is-divider"></div>
+
       <!-- Begin Contact Content -->
       <div class="section-light contact" id="contact">
         <div class="container">
@@ -404,6 +421,9 @@
       <!-- End Contact Content -->
     </div>
     <!-- End Main Content -->
+
+    <div class="is-divider"></div>
+
 
     <!-- Begin Footer -->
     <div class="footer">
