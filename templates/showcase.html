@@ -206,11 +206,10 @@
               <h2 class="subtitle">
                 More about my experience and skills
               </h2>
-              <form action="{{ resume.file }}">
-                <button class="button">
-                  Download Resume&emsp;<i class="fad fa-download fa-lg"></i>
-                </button>
-              </form>
+              <hr>
+              <a href="{% url 'download_resume' %}" class="button">
+                Download Resume&emsp;<i class="fad fa-download fa-lg"></i>
+              </a>
             </div>
           </div>
         </div>

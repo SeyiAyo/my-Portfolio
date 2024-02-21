@@ -1,8 +1,9 @@
-from django.shortcuts import render
-from .models import about, project
+from django.shortcuts import render, get_object_or_404
+from .models import about, project, resume
 from django.core.mail import send_mail
 from django.conf import settings
 from .forms import ContactForm
+from django.http import FileResponse, Http404
 
 
 
@@ -34,3 +35,14 @@ def contact(request):
     else:
         form = ContactForm()
     return render(request, 'contact.html', {'form': form})
+
+
+def download_resume(request):
+    # Assuming there's only one resume in the database
+    try:
+        # Retrieve the first (and presumably only) resume
+        resume_obj = resume.objects.first()
+        # Open the file associated with the resume and return it as a FileResponse
+        return FileResponse(open(resume_obj.file.path, 'rb'), as_attachment=True)
+    except (resume.DoesNotExist, FileNotFoundError, AttributeError):
+        raise Http404("File does not exist")
