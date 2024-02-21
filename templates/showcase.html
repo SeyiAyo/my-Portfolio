@@ -206,7 +206,7 @@
               <h2 class="subtitle">
                 More about my experience and skills
               </h2>
-              <form action="example.docs">
+              <form action="{{ resume.file }}">
                 <button class="button">
                   Download Resume&emsp;<i class="fad fa-download fa-lg"></i>
                 </button>
@@ -276,7 +276,7 @@
       </div>
       <!-- End Services Content -->
 
-      <div class="is-divider"></div>
+      <hr>
 
       <!-- Begin Skills Content -->
       <div class="section-light skills" id="skills">
@@ -291,13 +291,13 @@
               data-aos-easing="linear"
             >
               <h1>Python</h1>
-              <progress class="progress" value="70" max="100">30%</progress>
+              <progress class="progress" value="85" max="100">30%</progress>
               <h1>Django Framework</h1>
-              <progress class="progress" value="65" max="100">30%</progress>
+              <progress class="progress" value="90" max="100">30%</progress>
               <h1>Databases</h1>
-              <progress class="progress" value="58" max="100">45%</progress>
+              <progress class="progress" value="70" max="100">45%</progress>
               <h1>Front-End Technologies (HTML, CSS, and JavaScript)</h1>
-              <progress class="progress" value="90" max="100">60%</progress>
+              <progress class="progress" value="83" max="100">60%</progress>
             </div>
             <div
               class="column is-6"
@@ -318,7 +318,7 @@
       </div>
       <!-- End Skills Content -->
 
-      <div class="is-divider"></div>
+      <hr>
 
       <!-- Begin Work Content -->
       <div class="section-dark my-work" id="my-work">
@@ -333,9 +333,10 @@
             </div>
             {% for project in projects %}
               <div class="column is-3">
+                <h2 class="subtitle">{{ project.title }}</h2>
                 <a href="{{ project.url }}">
                   {% if project.image %}
-                    <figure class="image is-2by1 work-item">
+                    <figure class="image is-2by1 work-item" style="background-image: url('{{ project.image.url }}');">
                       <img src="{{ project.image.url }}" alt="">
                     </figure>
                   {% endif %}
@@ -347,8 +348,7 @@
       </div>
       <!-- End Work Content -->
 
-      <div class="is-divider"></div>
-
+      <hr>
       <!-- Begin Contact Content -->
       <div class="section-light contact" id="contact">
         <div class="container">
@@ -363,19 +363,12 @@
               </h1>
             </div>
             <div class="column is-8 is-offset-2">
-              <form
-                action="https://formspree.io/email@example.com"
-                method="POST"
-              >
+              <form action="{% url 'contact' %}" method="POST">
+                {% csrf_token %}
                 <div class="field">
                   <label class="label">Name</label>
                   <div class="control has-icons-left">
-                    <input
-                      class="input"
-                      type="text"
-                      placeholder="Ex. Jane Smith"
-                      name="Name"
-                    />
+                    <input class="input" type="text" placeholder="Ex. Jane Smith" name="name">
                     <span class="icon is-small is-left">
                       <i class="fas fa-user"></i>
                     </span>
@@ -384,12 +377,7 @@
                 <div class="field">
                   <label class="label">Email</label>
                   <div class="control has-icons-left">
-                    <input
-                      class="input"
-                      type="email"
-                      placeholder="Ex. hello@arctheme.com"
-                      name="Email"
-                    />
+                    <input class="input" type="email" placeholder="Ex. hello@arctheme.com" name="email">
                     <span class="icon is-small is-left">
                       <i class="fas fa-envelope"></i>
                     </span>
@@ -398,16 +386,12 @@
                 <div class="field">
                   <label class="label">Message</label>
                   <div class="control">
-                    <textarea
-                      class="textarea"
-                      placeholder="Textarea"
-                      name="Message"
-                    ></textarea>
+                    <textarea class="textarea" placeholder="Textarea" name="message"></textarea>
                   </div>
                 </div>
                 <div class="field">
-                  <div class="control ">
-                    <button class="button submit-button">
+                  <div class="control">
+                    <button class="button submit-button" type="submit">
                       Submit&nbsp;&nbsp;
                       <i class="fas fa-paper-plane"></i>
                     </button>
@@ -422,8 +406,7 @@
     </div>
     <!-- End Main Content -->
 
-    <div class="is-divider"></div>
-
+    <hr>
 
     <!-- Begin Footer -->
     <div class="footer">
